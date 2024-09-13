@@ -301,99 +301,73 @@
 
         <div class="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item"><img src="https://www.pexels.com/es-es/foto/flores-rosas-rosadas-envuelto-mercancias-17301401/" alt="Arreglo floral 1"></div>
-                <div class="carousel-item"><img src="https://www.pexels.com/es-es/foto/tulipanes-naranjas-en-maceta-gris-931154/" alt="Arreglo floral 2"></div>
-                <div class="carousel-item"><img src="https://www.pexels.com/es-es/foto/naturaleza-amor-hoja-regalo-27871590/" alt="Arreglo floral 3"></div>
+                <div class="carousel-item"><img src="https://images.pexels.com/photos/17301401/pexels-photo-17301401.jpeg" alt="Arreglo floral 1"></div>
+                <div class="carousel-item"><img src="https://images.pexels.com/photos/12532390/pexels-photo-12532390.jpeg" alt="Arreglo floral 2"></div>
+                <div class="carousel-item"><img src="https://images.pexels.com/photos/2782493/pexels-photo-2782493.jpeg" alt="Arreglo floral 3"></div>
             </div>
-            <a href="#" class="carousel-control prev">&lt;</a>
-            <a href="#" class="carousel-control next">&gt;</a>
+            <a href="#" class="carousel-control prev">&#10094;</a>
+            <a href="#" class="carousel-control next">&#10095;</a>
         </div>
 
         <section id="productos">
             <h2 class="section-title">Nuestros Productos</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="https://www.pexels.com/es-es/foto/5548/" alt="Ramo de rosas rojas">
+                    <img src="https://images.pexels.com/photos/12532390/pexels-photo-12532390.jpeg" alt="Arreglo floral elegante">
                     <div class="product-info">
-                        <h3>Ramo de Rosas Elegante</h3>
-                        <p>Un clásico ramo de rosas rojas, perfecto para expresar amor y aprecio.</p>
-                        <p>Precio: $29.99</p>
-                        <a href="#" class="btn">Comprar</a>
+                        <h3>Arreglo Floral Elegante</h3>
+                        <p>Un toque de elegancia para cualquier ocasión especial.</p>
+                        <a href="#" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
                 <div class="product">
-                    <img src="https://images.pexels.com/photos/1295991/pexels-photo-1295991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Arreglo floral colorido">
+                    <img src="https://images.pexels.com/photos/2782493/pexels-photo-2782493.jpeg" alt="Ramo Clásico">
                     <div class="product-info">
-                        <h3>Bouquet Primaveral</h3>
-                        <p>Una explosión de colores con una mezcla de flores de temporada.</p>
-                        <p>Precio: $39.99</p>
-                        <a href="#" class="btn">Comprar</a>
+                        <h3>Ramo Clásico</h3>
+                        <p>La elección perfecta para demostrar tu amor y aprecio.</p>
+                        <a href="#" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
                 <div class="product">
-                    <img src="https://images.pexels.com/photos/6773/flowers-gift-flower-pink.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramo de flores rosadas">
+                    <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg" alt="Centro de Mesa Primaveral">
                     <div class="product-info">
-                        <h3>Delicadeza Rosa</h3>
-                        <p>Un hermoso ramo de flores rosadas, perfecto para ocasiones especiales.</p>
-                        <p>Precio: $34.50</p>
-                        <a href="#" class="btn">Comprar</a>
+                        <h3>Centro de Mesa Primaveral</h3>
+                        <p>Añade un toque fresco y vibrante a tu mesa.</p>
+                        <a href="#" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="contacto">
-            <h2 class="section-title">Contáctanos</h2>
-            <p>Estamos en Usulután, El Salvador, listos para atender tus necesidades florales:</p>
-            <p>Teléfono: (503) XXXX-XXXX</p>
-            <p>Email: info@sueñosflorales.com</p>
-            <p>Horario: Lunes a Sábado, 9:00 AM - 7:00 PM</p>
+            <h2 class="section-title">Contacto</h2>
             <form class="contact-form">
-                <input type="text" placeholder="Nombre" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Mensaje" rows="4" required></textarea>
-                <button type="submit" class="btn">Enviar Mensaje</button>
+                <input type="text" placeholder="Nombre">
+                <input type="email" placeholder="Correo Electrónico">
+                <textarea placeholder="Mensaje"></textarea>
+                <button class="btn" type="submit">Enviar Mensaje</button>
             </form>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2024 Sueños Florales. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Sueños Florales - Todos los derechos reservados</p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            // Smooth scrolling
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
+        // Carousel Functionality
+        const carousel = document.querySelector('.carousel-inner');
+        const items = document.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
 
-            // Carousel functionality
-            const carousel = document.querySelector('.carousel-inner');
-            const items = carousel.querySelectorAll('.carousel-item');
-            let currentIndex = 0;
+        document.querySelector('.carousel-control.prev').addEventListener('click', () => {
+            currentIndex = (currentIndex === 0) ? items.length - 1 : currentIndex - 1;
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+        });
 
-            function showSlide(index) {
-                carousel.style.transform = `translateX(-${index * 100}%)`;
-            }
-
-            document.querySelector('.carousel-control.next').addEventListener('click', (e) => {
-                e.preventDefault();
-                currentIndex = (currentIndex + 1) % items.length;
-                showSlide(currentIndex);
-            });
-
-            document.querySelector('.carousel-control.prev').addEventListener('click', (e) => {
-                e.preventDefault();
-                currentIndex = (currentIndex - 1 + items.length) % items.length;
-                showSlide(currentIndex);
-            });
+        document.querySelector('.carousel-control.next').addEventListener('click', () => {
+            currentIndex = (currentIndex === items.length - 1) ? 0 : currentIndex + 1;
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
         });
     </script>
 </body>
