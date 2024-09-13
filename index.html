@@ -1,205 +1,187 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Flower, MapPin, Phone, Mail } from 'lucide-react'
-
-export default function Home() {
-  return (
-    <div className="flex flex-col min-h-screen">
-      <Head>
-        <title>Sueños Florales - Floristería en Usulután, El Salvador</title>
-        <meta name="description" content="Descubre la magia de las flores salvadoreñas en Sueños Florales, tu floristería de confianza en Usulután, El Salvador." />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Header />
-
-      <main>
-        <Hero />
-        <ProductSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-
-      <Footer />
-    </div>
-  )
-}
-
-function Header() {
-  return (
-    <header className="px-4 lg:px-6 h-16 flex items-center bg-green-100">
-      <Link href="/" className="flex items-center justify-center">
-        <Flower className="h-6 w-6 text-green-600" />
-        <span className="ml-2 text-2xl font-bold text-gray-900">Sueños Florales</span>
-      </Link>
-      <nav className="ml-auto flex gap-4 sm:gap-6">
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/">
-          Inicio
-        </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#productos">
-          Productos
-        </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#sobre-nosotros">
-          Sobre Nosotros
-        </Link>
-        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contacto">
-          Contacto
-        </Link>
-      </nav>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sueños Florales - Floristería en Usulután, El Salvador</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        header {
+            background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ff758c;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ff7eb3;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-block;
+            background: #ff758c;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #ff7eb3;
+        }
+        #contacto {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sueños Florales</h1>
+        <p>Creando belleza floral en Usulután, El Salvador</p>
     </header>
-  )
-}
 
-function Hero() {
-  return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-green-50">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center space-y-4 text-center">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-              Bienvenido a Sueños Florales
-            </h1>
-            <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
-              Descubre la magia de las flores salvadoreñas y llena tu vida de color y fragancia.
-            </p>
-          </div>
-          <div className="space-x-4">
-            <Button asChild>
-              <Link href="#productos">Ver Catálogo</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link href="#contacto">Contactar</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
 
-function ProductSection() {
-  const products = [
-    {
-      name: "Ramo de Rosas Rojas",
-      price: "$25",
-      image: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9zZSUyMGJvdXF1ZXR8ZW58MHx8MHx8fDA%3D"
-    },
-    {
-      name: "Arreglo de Girasoles",
-      price: "$30",
-      image: "https://images.unsplash.com/photo-1543512214-318c7553f230?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VuZmxvd2VyJTIwYXJyYW5nZW1lbnR8ZW58MHx8MHx8fDA%3D"
-    },
-    {
-      name: "Bouquet Primaveral",
-      price: "$35",
-      image: "https://images.unsplash.com/photo-1561181286-d5c88c3e9ba3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3ByaW5nJTIwYm91cXVldHxlbnwwfHwwfHx8MA%3D%3D"
-    },
-  ]
+    <div class="container">
+        <section id="inicio">
+            <h2>Bienvenidos a Sueños Florales</h2>
+            <p>Descubre la magia de nuestros arreglos florales, diseñados para hacer especial cada momento de tu vida.</p>
+        </section>
 
-  return (
-    <section id="productos" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-      <div className="container px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
-          Nuestros Productos Destacados
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {products.map((product) => (
-            <div key={product.name} className="flex flex-col items-center">
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={200}
-                height={200}
-                className="rounded-lg object-cover w-full h-64"
-              />
-              <h3 className="mt-4 font-semibold text-lg">{product.name}</h3>
-              <p className="text-sm text-gray-600">{product.price}</p>
-              <Button className="mt-2" asChild>
-                <Link href="#contacto">Ordenar</Link>
-              </Button>
+        <section id="productos">
+            <h2>Nuestros Productos</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <img src="/api/placeholder/400/300" alt="Ramo de rosas">
+                    <h3>Ramo de Rosas Elegante</h3>
+                    <p>Un clásico ramo de rosas rojas, perfecto para expresar amor y aprecio.</p>
+                    <p>Precio: $29.99</p>
+                    <a href="#" class="btn">Comprar</a>
+                </div>
+                <div class="product">
+                    <img src="/api/placeholder/400/300" alt="Arreglo de girasoles">
+                    <h3>Luz de Girasoles</h3>
+                    <p>Brillante arreglo de girasoles para iluminar cualquier espacio y estado de ánimo.</p>
+                    <p>Precio: $34.50</p>
+                    <a href="#" class="btn">Comprar</a>
+                </div>
+                <div class="product">
+                    <img src="/api/placeholder/400/300" alt="Bouquet primaveral">
+                    <h3>Bouquet Primaveral</h3>
+                    <p>Una explosión de colores con una mezcla de flores de temporada.</p>
+                    <p>Precio: $39.99</p>
+                    <a href="#" class="btn">Comprar</a>
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
+        </section>
 
-function AboutSection() {
-  return (
-    <section id="sobre-nosotros" className="w-full py-12 md:py-24 lg:py-32 bg-green-50">
-      <div className="container px-4 md:px-6">
-        <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
-          <Image
-            src="https://images.unsplash.com/photo-1533616688419-b7a585564566?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZsb3Jpc3R8ZW58MHx8MHx8fDA%3D"
-            width={400}
-            height={400}
-            alt="Sobre Nosotros"
-            className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
-          />
-          <div className="flex flex-col justify-center space-y-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Sobre Nosotros</h2>
-            <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              En Sueños Florales, nos apasiona crear arreglos florales únicos que transmiten emociones y belleza.
-              Con años de experiencia y un equipo dedicado en Usulután, El Salvador, nos esforzamos por ofrecer las
-              mejores flores y el mejor servicio a nuestros clientes.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <p>Estamos en Usulután, El Salvador, listos para atender tus necesidades florales:</p>
+            <p>Teléfono: (503) XXXX-XXXX</p>
+            <p>Email: info@sueñosflorales.com</p>
+            <p>Horario: Lunes a Sábado, 9:00 AM - 7:00 PM</p>
+        </section>
+    </div>
 
-function ContactSection() {
-  return (
-    <section id="contacto" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-      <div className="container px-4 md:px-6">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
-          Contáctanos
-        </h2>
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <MapPin className="text-green-600" />
-              <span>Usulután, El Salvador</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="text-green-600" />
-              <span>Teléfono: Por favor contáctanos para más información</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Mail className="text-green-600" />
-              <span>Email: info@suenosflorales.com</span>
-            </div>
-          </div>
-          <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <Input placeholder="Nombre" required />
-            <Input placeholder="Email" type="email" required />
-            <Input placeholder="Mensaje" required />
-            <Button className="w-full" type="submit">Enviar Mensaje</Button>
-          </form>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function Footer() {
-  return (
-    <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-      <p className="text-xs text-gray-600">© 2023 Sueños Florales. Todos los derechos reservados.</p>
-      <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-        <Link className="text-xs hover:underline underline-offset-4" href="#">
-          Términos de Servicio
-        </Link>
-        <Link className="text-xs hover:underline underline-offset-4" href="#">
-          Política de Privacidad
-        </Link>
-      </nav>
+    <footer>
+        <p>&copy; 2024 Sueños Florales. Todos los derechos reservados.</p>
     </footer>
-  )
-}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const navLinks = document.querySelectorAll('nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
