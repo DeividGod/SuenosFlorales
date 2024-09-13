@@ -1,146 +1,82 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Flower, Mail, MapPin, Phone } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import Head from 'next/head'
+import Layout from '../components/Layout'
+import Hero from '../components/Hero'
+import ProductSection from '../components/ProductSection'
+import AboutSection from '../components/AboutSection'
+import ContactSection from '../components/ContactSection'
 
-export default function Component() {
+export default function Home() {
+  return (
+    <Layout>
+      <Head>
+        <title>Sueños Florales - Floristería en Usulután, El Salvador</title>
+        <meta name="description" content="Descubre la magia de las flores salvadoreñas en Sueños Florales, tu floristería de confianza en Usulután, El Salvador." />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main>
+        <Hero />
+        <ProductSection />
+        <AboutSection />
+        <ContactSection />
+      </main>
+    </Layout>
+  )
+}
+          import Header from './Header'
+import Footer from './Footer'
+
+export default function Layout({ children }) {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-16 flex items-center bg-green-100">
-        <Link className="flex items-center justify-center" href="#">
-          <Flower className="h-6 w-6 text-green-600" />
-          <span className="ml-2 text-2xl font-bold text-gray-900">Sueños Florales</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Inicio
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Productos
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Sobre Nosotros
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="#">
-            Contacto
-          </Link>
-        </nav>
-      </header>
-      <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-green-50">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Bienvenido a Sueños Florales
-                </h1>
-                <p className="mx-auto max-w-[700px] text-gray-600 md:text-xl">
-                  Descubre la magia de las flores salvadoreñas y llena tu vida de color y fragancia.
-                </p>
-              </div>
-              <div className="space-x-4">
-                <Button asChild>
-                  <Link href="#productos">Ver Catálogo</Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <Link href="#contacto">Contactar</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="productos" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
-              Nuestros Productos Destacados
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-              {[
-                { name: "Ramo de Rosas Rojas", price: "$25", image: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cm9zZSUyMGJvdXF1ZXR8ZW58MHx8MHx8fDA%3D" },
-                { name: "Arreglo de Girasoles", price: "$30", image: "https://images.unsplash.com/photo-1543512214-318c7553f230?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VuZmxvd2VyJTIwYXJyYW5nZW1lbnR8ZW58MHx8MHx8fDA%3D" },
-                { name: "Bouquet Primaveral", price: "$35", image: "https://images.unsplash.com/photo-1561181286-d5c88c3e9ba3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3ByaW5nJTIwYm91cXVldHxlbnwwfHwwfHx8MA%3D%3D" },
-              ].map((product) => (
-                <div key={product.name} className="flex flex-col items-center">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={200}
-                    height={200}
-                    className="rounded-lg object-cover w-full h-64"
-                  />
-                  <h3 className="mt-4 font-semibold text-lg">{product.name}</h3>
-                  <p className="text-sm text-gray-600">{product.price}</p>
-                  <Button className="mt-2" asChild>
-                    <Link href="#contacto">Ordenar</Link>
-                  </Button>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-green-50">
-          <div className="container px-4 md:px-6">
-            <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-2">
-              <Image
-                src="https://images.unsplash.com/photo-1533616688419-b7a585564566?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZsb3Jpc3R8ZW58MHx8MHx8fDA%3D"
-                width={400}
-                height={400}
-                alt="Sobre Nosotros"
-                className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
-              />
-              <div className="flex flex-col justify-center space-y-4">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Sobre Nosotros</h2>
-                <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  En Sueños Florales, nos apasiona crear arreglos florales únicos que transmiten emociones y belleza.
-                  Con años de experiencia y un equipo dedicado en Usulután, El Salvador, nos esforzamos por ofrecer las
-                  mejores flores y el mejor servicio a nuestros clientes.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="contacto" className="w-full py-12 md:py-24 lg:py-32 bg-white">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-8">
-              Contáctanos
-            </h2>
-            <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-              <div className="space-y-4">
-                <div className="flex items-center space-x-2">
-                  <MapPin className="text-green-600" />
-                  <span>Usulután, El Salvador</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Phone className="text-green-600" />
-                  <span>Teléfono: Por favor contáctanos para más información</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Mail className="text-green-600" />
-                  <span>Email: info@suenosflorales.com</span>
-                </div>
-              </div>
-              <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                <Input placeholder="Nombre" required />
-                <Input placeholder="Email" type="email" required />
-                <Input placeholder="Mensaje" required />
-                <Button className="w-full" type="submit">Enviar Mensaje</Button>
-              </form>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-gray-600">© 2023 Sueños Florales. Todos los derechos reservados.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Términos de Servicio
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Política de Privacidad
-          </Link>
-        </nav>
-      </footer>
+      <Header />
+      {children}
+      <Footer />
     </div>
   )
 }
+        import Link from 'next/link'
+import { Flower } from 'lucide-react'
+
+export default function Header() {
+  return (
+    <header className="px-4 lg:px-6 h-16 flex items-center bg-green-100">
+      <Link href="/" className="flex items-center justify-center">
+        <Flower className="h-6 w-6 text-green-600" />
+        <span className="ml-2 text-2xl font-bold text-gray-900">Sueños Florales</span>
+      </Link>
+      <nav className="ml-auto flex gap-4 sm:gap-6">
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="/">
+          Inicio
+        </Link>
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#productos">
+          Productos
+        </Link>
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#sobre-nosotros">
+          Sobre Nosotros
+        </Link>
+        <Link className="text-sm font-medium hover:underline underline-offset-4" href="#contacto">
+          Contacto
+        </Link>
+      </nav>
+    </header>
+  )
+}
+        import Link from 'next/link'
+
+export default function Footer() {
+  return (
+    <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+      <p className="text-xs text-gray-600">© 2023 Sueños Florales. Todos los derechos reservados.</p>
+      <nav className="sm:ml-auto flex gap-4 sm:gap-6">
+        <Link className="text-xs hover:underline underline-offset-4" href="#">
+          Términos de Servicio
+        </Link>
+        <Link className="text-xs hover:underline underline-offset-4" href="#">
+          Política de Privacidad
+        </Link>
+      </nav>
+    </footer>
+  )
+}
+        
