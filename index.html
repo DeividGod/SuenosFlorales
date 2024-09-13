@@ -5,35 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sueños Florales - Floristería en Usulután, El Salvador</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
         
         :root {
             --primary-color: #ff758c;
             --secondary-color: #ff7eb3;
-            --background-color: #f8f8f8;
+            --accent-color: #4a4a4a;
+            --background-color: #fffaf0;
             --text-color: #333;
         }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
             background-color: var(--background-color);
             color: var(--text-color);
         }
+        
         header {
-            background-image: linear-gradient(to right, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background-image: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: #ffffff;
             text-align: center;
             padding: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
         header h1 {
-            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
             margin-bottom: 0.5rem;
-            animation: fadeInDown 1s ease-out;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
+        
+        header p {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
         nav {
             background-color: #ffffff;
             padding: 1rem;
@@ -42,59 +73,147 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        
         nav ul {
             list-style-type: none;
-            padding: 0;
             display: flex;
             justify-content: center;
         }
+        
         nav ul li {
             margin: 0 15px;
         }
+        
         nav ul li a {
-            color: var(--primary-color);
+            color: var(--accent-color);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            position: relative;
         }
-        nav ul li a:hover {
-            color: var(--secondary-color);
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
         }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
         .container {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px;
             margin: auto;
-            overflow: hidden;
             padding: 20px;
         }
+        
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.7);
+            color: var(--accent-color);
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .carousel-control:hover {
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .carousel-control.prev { left: 10px; }
+        .carousel-control.next { right: 10px; }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+        }
+        
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 30px;
         }
+        
         .product {
             background: #fff;
             border-radius: 10px;
-            padding: 20px;
-            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            animation: fadeIn 1s ease-out;
         }
+        
         .product:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
+        
         .product img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 15px;
             transition: transform 0.3s ease;
         }
+        
         .product:hover img {
             transform: scale(1.05);
         }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-info p {
+            margin-bottom: 15px;
+        }
+        
         .btn {
             display: inline-block;
             background: var(--primary-color);
@@ -103,88 +222,60 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background 0.3s ease, transform 0.3s ease;
+            text-align: center;
         }
+        
         .btn:hover {
             background: var(--secondary-color);
             transform: translateY(-2px);
         }
+        
         #contacto {
             background-color: #fff;
             border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 20px;
-        }
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carousel-item {
-            min-width: 100%;
-            height: 400px;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: #fff;
-            padding: 10px;
-            text-decoration: none;
-        }
-        .carousel-control.prev { left: 10px; }
-        .carousel-control.next { right: 10px; }
-        .special-offer {
-            background: var(--secondary-color);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            animation: pulse 2s infinite;
-        }
+        
         .contact-form {
             display: grid;
-            gap: 15px;
+            gap: 20px;
         }
+        
         .contact-form input,
         .contact-form textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            font-size: 1rem;
         }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        
+        .contact-form textarea {
+            resize: vertical;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+        footer {
+            background-color: var(--accent-color);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .carousel {
+                height: 300px;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
         }
     </style>
 </head>
@@ -204,54 +295,55 @@
 
     <div class="container">
         <section id="inicio">
-            <h2>Bienvenidos a Sueños Florales</h2>
+            <h2 class="section-title">Bienvenidos a Sueños Florales</h2>
             <p>Descubre la magia de nuestros arreglos florales, diseñados para hacer especial cada momento de tu vida.</p>
         </section>
 
         <div class="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item"><img src="https://images.app.goo.gl/mXc96mZvw8iti8Nk7" alt="Arreglo floral 1"></div>
-                <div class="carousel-item"><img src="https://images.app.goo.gl/PrUpjamQpFvGoxow6" alt="Arreglo floral 2"></div>
-                <div class="carousel-item"><img src="https://images.app.goo.gl/94ZFdDpW6fFX3Few9" alt="Arreglo floral 3"></div>
+                <div class="carousel-item"><img src="https://images.pexels.com/photos/6773/flowers-gift-flower-pink.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramo de flores rosadas"></div>
+                <div class="carousel-item"><img src="https://images.pexels.com/photos/1295991/pexels-photo-1295991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Arreglo floral colorido"></div>
+                <div class="carousel-item"><img src="https://images.pexels.com/photos/112396/pexels-photo-112396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Rosas rojas"></div>
             </div>
             <a href="#" class="carousel-control prev">&lt;</a>
             <a href="#" class="carousel-control next">&gt;</a>
         </div>
 
-        <div class="special-offer">
-            <h3>¡Oferta Especial!</h3>
-            <p>15% de descuento en todos los ramos. ¡La oferta termina en <span id="countdown">05:00:00</span>!</p>
-        </div>
-
         <section id="productos">
-            <h2>Nuestros Productos</h2>
+            <h2 class="section-title">Nuestros Productos</h2>
             <div class="product-grid">
                 <div class="product">
-                    <img src="https://images.app.goo.gl/qG39ehvRDEmjwdHz8" alt="Ramo de rosas">
-                    <h3>Ramo de Rosas Elegante</h3>
-                    <p>Un clásico ramo de rosas rojas, perfecto para expresar amor y aprecio.</p>
-                    <p>Precio: $29.99</p>
-                    <a href="#" class="btn">Comprar</a>
+                    <img src="https://images.pexels.com/photos/112396/pexels-photo-112396.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramo de rosas rojas">
+                    <div class="product-info">
+                        <h3>Ramo de Rosas Elegante</h3>
+                        <p>Un clásico ramo de rosas rojas, perfecto para expresar amor y aprecio.</p>
+                        <p>Precio: $29.99</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
                 </div>
                 <div class="product">
-                    <img src="https://images.app.goo.gl/5id2rcs18XeZrouAA" alt="Arreglo de girasoles">
-                    <h3>Luz de Girasoles</h3>
-                    <p>Brillante arreglo de girasoles para iluminar cualquier espacio y estado de ánimo.</p>
-                    <p>Precio: $34.50</p>
-                    <a href="#" class="btn">Comprar</a>
+                    <img src="https://images.pexels.com/photos/1295991/pexels-photo-1295991.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Arreglo floral colorido">
+                    <div class="product-info">
+                        <h3>Bouquet Primaveral</h3>
+                        <p>Una explosión de colores con una mezcla de flores de temporada.</p>
+                        <p>Precio: $39.99</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
                 </div>
                 <div class="product">
-                    <img src="https://images.app.goo.gl/Yc658HeWBwgLohxt9" alt="Bouquet primaveral">
-                    <h3>Bouquet Primaveral</h3>
-                    <p>Una explosión de colores con una mezcla de flores de temporada.</p>
-                    <p>Precio: $39.99</p>
-                    <a href="#" class="btn">Comprar</a>
+                    <img src="https://images.pexels.com/photos/6773/flowers-gift-flower-pink.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ramo de flores rosadas">
+                    <div class="product-info">
+                        <h3>Delicadeza Rosa</h3>
+                        <p>Un hermoso ramo de flores rosadas, perfecto para ocasiones especiales.</p>
+                        <p>Precio: $34.50</p>
+                        <a href="#" class="btn">Comprar</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="contacto">
-            <h2>Contáctanos</h2>
+            <h2 class="section-title">Contáctanos</h2>
             <p>Estamos en Usulután, El Salvador, listos para atender tus necesidades florales:</p>
             <p>Teléfono: (503) XXXX-XXXX</p>
             <p>Email: info@sueñosflorales.com</p>
@@ -298,48 +390,4 @@
             });
 
             document.querySelector('.carousel-control.prev').addEventListener('click', (e) => {
-                e.preventDefault();
-                currentIndex = (currentIndex - 1 + items.length) % items.length;
-                showSlide(currentIndex);
-            });
-
-            // Auto-advance carousel
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % items.length;
-                showSlide(currentIndex);
-            }, 5000);
-
-            // Countdown timer
-            function startCountdown(duration, display) {
-                let timer = duration, hours, minutes, seconds;
-                setInterval(function () {
-                    hours = parseInt(timer / 3600, 10);
-                    minutes = parseInt((timer % 3600) / 60, 10);
-                    seconds = parseInt(timer % 60, 10);
-
-                    hours = hours < 10 ? "0" + hours : hours;
-                    minutes = minutes < 10 ? "0" + minutes : minutes;
-                    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                    display.textContent = hours + ":" + minutes + ":" + seconds;
-
-                    if (--timer < 0) {
-                        timer = duration;
-                    }
-                }, 1000);
-            }
-
-            let fiveHours = 60 * 60 * 5;
-            let display = document.querySelector('#countdown');
-            startCountdown(fiveHours, display);
-
-            // Form submission (prevent default for demo)
-            document.querySelector('.contact-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-                this.reset();
-            });
-        });
-    </script>
-</body>
-</html>
+                e.
